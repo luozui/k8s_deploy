@@ -10,7 +10,7 @@ grep 'client-certificate-data' ~/.kube/config | head -n 1 | awk '{print $2}' | b
 grep 'client-key-data' ~/.kube/config | head -n 1 | awk '{print $2}' | base64 -d >> kubecfg.key
 openssl pkcs12 -export -clcerts -inkey kubecfg.key -in kubecfg.crt -out kubecfg.p12 -name "kubernetes-client"
 
-echo -e '\033[5;37;43m[十分重要]\033[0m' '请自行复制登录证书到本地: .kube/kubecfg.p12'
+echo -e '\033[5;37;43m[十分重要]\033[0m' '请自行复制登录证书到本地: ~/.kube/kubecfg.p12'
 read -p "按回车键继续: "
 
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
