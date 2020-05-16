@@ -117,6 +117,9 @@ menu() {
     5)
         ;;
     6)
+        cd $work_path/es_kibana_fluentd
+        bash ./install.sh
+        judge "安装日志系统"
         ;;
     7)
         ;;
