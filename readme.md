@@ -10,7 +10,7 @@ app version:
 ## Quic start
 
 ``` shell
-git clone https://github.com/luozui/k8s_deploy.git
+git clone --recurse-submodules https://github.com/luozui/k8s_deploy.git
 cd k8s_deploy
 sudo ./install.sh
 ```

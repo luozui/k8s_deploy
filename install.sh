@@ -35,44 +35,44 @@ is_root() {
 }
 
 install_k8s_master() {
-	cd $work_path/kubernetes
-	is_root
-	bash ./01_pre_check_and_configure.sh
-	judge "系统检测和配置"
-	bash ./02_install_docker.sh
-	judge "安装docker"
-	bash ./03_install_kubernetes.sh
-	judge "安装kubernetes"
-	bash ./04_master_init.sh
-	judge "配置Master和网络"
+    cd $work_path/kubernetes
+    is_root
+    bash ./01_pre_check_and_configure.sh
+    judge "系统检测和配置"
+    bash ./02_install_docker.sh
+    judge "安装docker"
+    bash ./03_install_kubernetes.sh
+    judge "安装kubernetes"
+    bash ./04_master_init.sh
+    judge "配置Master和网络"
 
-	judge "done"
+    judge "done"
 }
 
 install_k8s_worker() {
-	cd $work_path/kubernetes
-	is_root
-	bash ./01_pre_check_and_configure.sh
-	judge "系统检测和配置"
-	bash ./02_install_docker.sh
-	judge "安装docker"
-	bash ./03_install_kubernetes.sh
-	judge "安装kubernetes"
-	
-	echo -e "注意安装还未完成，请执行安装Master日志中打印的join口令，like this：\nkubeadm join 192.168.3.252:6443 --token abcdef.0123456789abcdef \\
+    cd $work_path/kubernetes
+    is_root
+    bash ./01_pre_check_and_configure.sh
+    judge "系统检测和配置"
+    bash ./02_install_docker.sh
+    judge "安装docker"
+    bash ./03_install_kubernetes.sh
+    judge "安装kubernetes"
+    
+    echo -e "注意安装还未完成，请执行安装Master日志中打印的join口令，like this：\nkubeadm join 192.168.3.252:6443 --token abcdef.0123456789abcdef \\
     --discovery-token-ca-cert-hash sha256:cb4b437892bce4eae48ca4b3adebef1bfd873367587ba11588b12a6be44bf4e4"
 }
 
 k8s_prometheus() {
-	git submodule update
-	cd $work_path/kube-prometheus
-	kubectl create -f manifests/setup && \
-	until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done && \
-	kubectl create -f manifests/
+    git submodule update
+    cd $work_path/kube-prometheus
+    kubectl create -f manifests/setup && \
+    until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done && \
+    kubectl create -f manifests/
 }
 
 menu() {
-	clear
+    clear
     echo -e "\t Kubernetes 一键安装脚本"
     echo -e "\t---authored by luozui---"
     echo -e "\thttps://github.com/luozui\n"
@@ -102,13 +102,13 @@ menu() {
         install_k8s_worker
         ;;
     3)
-		cd $work_path/dashboard
-		bash ./install_dashboard.sh
-		judge "安装dashboard"
+        cd $work_path/dashboard
+        bash ./install_dashboard.sh
+        judge "安装dashboard"
         ;;
     4)
-		k8s_prometheus
-		judge "安装dashboard"
+        k8s_prometheus
+        judge "安装dashboard"
         ;;
     5)
         ;;
