@@ -115,6 +115,9 @@ menu() {
         judge "安装dashboard"
         ;;
     5)
+        cd $work_path/jenkins
+        bash ./install_jenkins.sh
+        judge "安装jenkins"
         ;;
     6)
         cd $work_path/es_kibana_fluentd
