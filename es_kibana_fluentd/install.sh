@@ -1,15 +1,12 @@
 #!/bin/bash
 
-kubectl create -f kube-logging.yaml
 
-kubectl create -f elasticsearch_svc.yaml
-
-kubectl create -f elasticsearch_statefulset.yaml
-
-kubectl create -f kibana.yaml
-
-kubectl create -f fluentd.yaml
+kubectl $1 -f kube-logging.yaml
+kubectl $1 -f pv.yaml
+kubectl $1 -f elasticsearch_svc.yaml
+kubectl $1 -f elasticsearch_statefulset.yaml
+kubectl $1 -f kibana.yaml
+kubectl $1 -f fluentd.yaml
 
 echo -e "执行以下命令露出kibana："
-echo -e kubectl port-forward kibana-6c9fb4b5b7-plbg2 5601:5601 --namespace=kube-logging
-
+echo -e kubectl --namespace kube-logging port-forward --address 0.0.0.0 svc/kibana 5601
