@@ -12,6 +12,7 @@ Font="\033[0m"
 # Info="${Green}[信息]${Font}"
 OK="${Green}[OK]${Font}"
 Error="${Red}[错误]${Font}"
+work_path=$(pwd)
 
 judge() {
     if [[ 0 -eq $? ]]; then
@@ -22,6 +23,7 @@ judge() {
         exit 1
     fi
 }
+
 is_root() {
     if [ 0 == $UID ]; then
         echo -e "${OK} ${GreenBG} 当前用户是root用户，进入安装流程 ${Font}"
@@ -33,7 +35,7 @@ is_root() {
 }
 
 install_k8s_master() {
-	cd kubernetes
+	cd $work_path/kubernetes
 	is_root
 	bash ./01_pre_check_and_configure.sh
 	judge "系统检测和配置"
@@ -48,7 +50,7 @@ install_k8s_master() {
 }
 
 install_k8s_worker() {
-	cd kubernetes
+	cd $work_path/kubernetes
 	is_root
 	bash ./01_pre_check_and_configure.sh
 	judge "系统检测和配置"
@@ -92,6 +94,8 @@ menu() {
         install_k8s_worker
         ;;
     3)
+		cd $work_path/dashboard
+		bash ./install_dashboard.sh
         ;;
     4)
         ;;
