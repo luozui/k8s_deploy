@@ -9,7 +9,7 @@ sed -e 's/imageRepository: k8s.gcr.io/imageRepository: registry.cn-hangzhou.aliy
 kubeadm config images pull --config kubeadm-init.yaml
 kubeadm init --config kubeadm-init.yaml
 echo -e '\033[5;37;43m[十分重要]\033[0m' '请记录上面的token'
-sleep 2
+read -p '按回车键继续：'
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
