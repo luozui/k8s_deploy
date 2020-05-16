@@ -131,6 +131,8 @@ menu() {
     9)
         ;;
     10)
+        cd $work_path/kubernetes
+        sh /k8s_health_check.sh
         ;;
     11)
         exit 0
