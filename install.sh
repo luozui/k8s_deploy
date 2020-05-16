@@ -78,22 +78,22 @@ kubectl --namespace monitoring port-forward --address 0.0.0.0 svc/alertmanager-m
 menu() {
     clear
     echo -e "\t Kubernetes 一键安装脚本"
-    echo -e "\t---authored by luozui---"
-    echo -e "\thttps://github.com/luozui\n"
+    echo -e "\t Authored by luozui"
+    echo -e "\t https://github.com/luozui\n"
 
-    echo -e "—————————————— 安装向导 ——————————————"""
+    echo -e "—————————————————————————————————————— 安装向导 ——————————————————————————————————————"
     echo -e "${Green}1.${Font}  安装 Kubernetes Master 节点环境 (Docker+kubelet+kubeadm+kubectl)"
     echo -e "${Green}2.${Font}  安装 Kubernetes Worker 节点环境"
-    echo -e "—————————————— 插件安装 ——————————————"
+    echo -e "—————————————————————————————————————— 插件安装 ——————————————————————————————————————"
     echo -e "${Green}3.${Font}  安装 Kubernetes dashboard"
     echo -e "${Green}4.${Font}  安装 kube-prometheus (prometheus+alertmanager+grafana)"
     echo -e "${Green}5.${Font}  安装 Jenkins"
     echo -e "${Green}6.${Font}  安装 Elasticsearch & Kibana & Fluentd"
-    echo -e "—————————————— 部署应用 ——————————————"
+    echo -e "—————————————————————————————————————— 部署应用 ——————————————————————————————————————"
     echo -e "${Green}7.${Font}  部署 MySQL"
     echo -e "${Green}8.${Font}  部署 Redis"
     echo -e "${Green}9.${Font}  部署 RabbitMQ"
-    echo -e "—————————————— 其他选项 ——————————————"
+    echo -e "—————————————————————————————————————— 其他选项 ——————————————————————————————————————"
     echo -e "${Green}10.${Font} 检查安装信息"
     echo -e "${Green}11.${Font} 退出 \n"
 
@@ -116,7 +116,7 @@ menu() {
         ;;
     5)
         cd $work_path/jenkins
-        bash ./install_jenkins.sh
+        bash ./install_jenkins.sh apply
         judge "安装jenkins"
         ;;
     6)
