@@ -69,6 +69,10 @@ k8s_prometheus() {
     kubectl create -f manifests/setup && \
     until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done && \
     kubectl create -f manifests/
+    echo -e '远程访问仪盘表，请执行：'
+    echo -e 'kubectl --namespace monitoring port-forward --address 0.0.0.0 svc/prometheus-k8s 9090
+kubectl --namespace monitoring port-forward --address 0.0.0.0 svc/grafana 3000
+kubectl --namespace monitoring port-forward --address 0.0.0.0 svc/alertmanager-main 9093'
 }
 
 menu() {
