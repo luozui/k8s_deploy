@@ -69,6 +69,7 @@ spec:
       labels:
         app: jenkins
     spec:
+      serviceAccountName: jenkins
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
