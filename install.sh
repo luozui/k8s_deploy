@@ -63,6 +63,14 @@ install_k8s_worker() {
     --discovery-token-ca-cert-hash sha256:cb4b437892bce4eae48ca4b3adebef1bfd873367587ba11588b12a6be44bf4e4"
 }
 
+k8s_prometheus() {
+	git submodule update
+	cd $work_path/kube-prometheus
+	kubectl create -f manifests/setup && \
+	until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done && \
+	kubectl create -f manifests/
+}
+
 menu() {
 	clear
     echo -e "\t Kubernetes 一键安装脚本"
@@ -96,8 +104,11 @@ menu() {
     3)
 		cd $work_path/dashboard
 		bash ./install_dashboard.sh
+		judge "安装dashboard"
         ;;
     4)
+		k8s_prometheus
+		judge "安装dashboard"
         ;;
     5)
         ;;
