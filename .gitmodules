@@ -1,6 +1,6 @@
 [submodule "kube-prometheus"]
 	path = kube-prometheus
 	url = https://github.com/coreos/kube-prometheus.git
-[submodule "k8s_practice"]
+[submodule "example/k8s_practice"]
 	path = example/k8s_practice
 	url = https://github.com/luozui/k8s_practice.git
