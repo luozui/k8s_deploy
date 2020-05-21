@@ -3,9 +3,14 @@
 env:
 - centos7
 
-app version:
-- k8s v1.18.0
+One-click deployment:
+- kubernetes v1.18.0
 - docker v18
+- Kubernetes Dashboard。
+- Jenkins
+- Prometheus、Alertmanager、Grafana
+- Fluentd、Elasticsearch、Kibana
+
 
 ## Quic start
 
