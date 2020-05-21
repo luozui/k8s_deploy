@@ -4,8 +4,8 @@ Env requirements:
 - centos7
 
 Optional installation checklist:
-- ** kubernetes v1.18.0 **
-- ** docker v18 **
+- kubernetes v1.18.0
+- docker v18
 - Kubernetes Dashboard。
 - Jenkins
 - Prometheus、Alertmanager、Grafana
