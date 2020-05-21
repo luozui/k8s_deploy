@@ -12,7 +12,7 @@ One-click deployment:
 - Fluentd、Elasticsearch、Kibana
 
 
-## Quic start
+## Quick start
 
 ``` shell
 git clone --recurse-submodules https://github.com/luozui/k8s_deploy.git
