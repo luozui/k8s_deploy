@@ -92,7 +92,7 @@ menu() {
     echo -e "—————————————————————————————————————— 部署应用 ——————————————————————————————————————"
     echo -e "${Green}7.${Font}  部署 MySQL"
     echo -e "${Green}8.${Font}  部署 Redis"
-    echo -e "${Green}9.${Font}  部署 RabbitMQ"
+    echo -e "${Green}9.${Font}  部署 example/app1"
     echo -e "—————————————————————————————————————— 其他选项 ——————————————————————————————————————"
     echo -e "${Green}10.${Font} 检查安装信息"
     echo -e "${Green}11.${Font} 退出 \n"
@@ -125,10 +125,19 @@ menu() {
         judge "安装日志系统"
         ;;
     7)
+        cd $work_path/example/k8s_practice
+        bash ./install_mysql.sh apply
+        judge "安装mysql"
         ;;
     8)
+        cd $work_path/example/k8s_practice
+        bash ./install_redis.sh apply
+        judge "安装redis"
         ;;
     9)
+        cd $work_path/example/k8s_practice
+        bash ./install_app1.sh apply
+        judge "安装app1"
         ;;
     10)
         cd $work_path/kubernetes
